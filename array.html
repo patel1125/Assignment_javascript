@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Array Tasks</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; padding: 8px; }
+    button { cursor: pointer; background: #0078D7; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #005fa3; }
+    .output { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Interactive Array Tasks</h2>
+
+  <!-- Task 1: Fruit Array -->
+  <h3>Task 1: Fruit Array Manipulation</h3>
+  <input type="text" id="newFruit" placeholder="Enter a fruit to add">
+  <button onclick="addFruit()">Add Fruit</button>
+  <button onclick="removeFirstFruit()">Remove First Fruit</button>
+  <p id="fruitsOutput" class="output"></p>
+
+  <!-- Task 2: Sum of Numbers -->
+  <h3>Task 2: Sum of Numbers</h3>
+  <input type="number" id="numInput" placeholder="Enter a number">
+  <button onclick="addNumber()">Add Number</button>
+  <button onclick="calculateSum()">Calculate Sum</button>
+  <p id="numbersOutput" class="output"></p>
+
+  <script>
+    // Task 1: Fruits array
+    let fruits = ["apple", "banana", "cherry"];
+    const fruitsOutput = document.getElementById("fruitsOutput");
+    function displayFruits() {
+      fruitsOutput.textContent = "Current Fruits: " + fruits.join(", ");
+      console.log("Fruits array:", fruits);
+    }
+    displayFruits();
+
+    function addFruit() {
+      let fruit = document.getElementById("newFruit").value.trim();
+      if (fruit === "") {
+        alert("Please enter a fruit name!");
+        return;
+      }
+      fruits.push(fruit);
+      displayFruits();
+      document.getElementById("newFruit").value = "";
+    }
+
+    function removeFirstFruit() {
+      if (fruits.length === 0) {
+        alert("No fruits to remove!");
+        return;
+      }
+      fruits.shift();
+      displayFruits();
+    }
+
+    // Task 2: Numbers array
+    let numbers = [];
+    const numbersOutput = document.getElementById("numbersOutput");
+
+    function addNumber() {
+      let num = Number(document.getElementById("numInput").value);
+      if (isNaN(num)) {
+        alert("Please enter a valid number!");
+        return;
+      }
+      numbers.push(num);
+      numbersOutput.textContent = "Numbers: " + numbers.join(", ");
+      console.log("Numbers array:", numbers);
+      document.getElementById("numInput").value = "";
+    }
+
+    function calculateSum() {
+      if (numbers.length === 0) {
+        alert("No numbers to sum!");
+        return;
+      }
+      let sum = numbers.reduce((acc, val) => acc + val, 0);
+      numbersOutput.textContent += " | Sum = " + sum;
+      console.log("Sum of numbers:", sum);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Loop Tasks</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #output { margin-top: 15px; padding: 10px; background: #f9f9f9; border: 1px solid #ddd; }
+    input, button { margin: 5px; padding: 8px; }
+    button { cursor: pointer; background: #0078D7; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #005fa3; }
+    .task-title { margin-top: 20px; font-weight: bold; }
+    #task3Result { font-weight: bold; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>JavaScript Loop Tasks</h2>
+  <div id="output"></div>
+
+  <h3 class="task-title">Task 3: Enter a number greater than 10</h3>
+  <input type="number" id="userInput" placeholder="Enter number">
+  <button onclick="checkInput()">Submit</button>
+  <p id="task3Result"></p>
+
+  <button onclick="resetAll()">🔄 Reset All</button>
+
+  <script>
+    let out = document.getElementById("output");
+
+    function print(text) {
+      console.log(text);
+      out.innerHTML += text + "<br>";
+    }
+
+    // ✅ Task 1: For loop to print numbers from 1 to 10
+    function runTask1() {
+      print("<b>Task 1: Numbers from 1 to 10</b>");
+      for (let i = 1; i <= 10; i++) {
+        print(i);
+      }
+      print("<hr>");
+    }
+
+    // ✅ Task 2: While loop to sum all even numbers between 1 and 20
+    function runTask2() {
+      print("<b>Task 2: Sum of even numbers (1 to 20)</b>");
+      let sum = 0;
+      let num = 1;
+      while (num <= 20) {
+        if (num % 2 === 0) {
+          sum += num;
+        }
+        num++;
+      }
+      print("Sum of even numbers = " + sum);
+      print("<hr>");
+    }
+
+    // ✅ Task 3: Do-while loop (interactive input)
+    let userNumber;
+    function checkInput() {
+      let inputField = document.getElementById("userInput");
+      let input = Number(inputField.value);
+      let result = document.getElementById("task3Result");
+
+      do {
+        userNumber = input;
+        if (userNumber <= 10) {
+          result.textContent = "❌ " + userNumber + " is not greater than 10. Try again!";
+          inputField.value = ""; 
+          inputField.focus();    
+          return;
+        }
+      } while (userNumber <= 10);
+
+      result.textContent = "✅ Correct! You entered " + userNumber + " (greater than 10)";
+      inputField.value = "";
+    }
+
+    // ✅ Reset All function
+    function resetAll() {
+      out.innerHTML = "";
+      document.getElementById("task3Result").textContent = "";
+      document.getElementById("userInput").value = "";
+      document.getElementById("userInput").focus();
+      runTask1();
+      runTask2();
+    }
+
+    // Run Task 1 & Task 2 on page load
+    runTask1();
+    runTask2();
+  </script>
+</body>
+</html>

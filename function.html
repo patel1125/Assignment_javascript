@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive JavaScript Functions</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; padding: 8px; }
+    button { cursor: pointer; background: #0078D7; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #005fa3; }
+    .output { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Interactive JavaScript Functions</h2>
+  
+  <!-- Task 1: greetUser -->
+  <h3>Task 1: Greet User</h3>
+  <input type="text" id="userName" placeholder="Enter your name">
+  <button onclick="greetUser()">Greet</button>
+  
+  <!-- Task 2: calculateSum -->
+  <h3>Task 2: Calculate Sum</h3>
+  <input type="number" id="num1" placeholder="Enter first number">
+  <input type="number" id="num2" placeholder="Enter second number">
+  <button onclick="calculateSum()">Calculate Sum</button>
+  
+  <div id="output" class="output"></div>
+
+  <script>
+    let outputDiv = document.getElementById("output");
+
+    // Task 1: greetUser function
+    function greetUser() {
+      let name = document.getElementById("userName").value.trim();
+      if (name === "") {
+        alert("Please enter a name!");
+        return;
+      }
+      let message = "Hello, " + name + "!";
+      console.log(message);
+      outputDiv.innerHTML += message + "<br>";
+      document.getElementById("userName").value = ""; // clear input
+    }
+
+    // Task 2: calculateSum function
+    function calculateSum() {
+      let a = Number(document.getElementById("num1").value);
+      let b = Number(document.getElementById("num2").value);
+      if (isNaN(a) || isNaN(b)) {
+        alert("Please enter valid numbers!");
+        return;
+      }
+      let sum = a + b;
+      let message = "Sum of " + a + " and " + b + " = " + sum;
+      console.log(message);
+      outputDiv.innerHTML += message + "<br>";
+      document.getElementById("num1").value = "";
+      document.getElementById("num2").value = "";
+    }
+  </script>
+</body>
+</html>

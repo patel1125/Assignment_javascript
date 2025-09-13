@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Paragraph with Button</title>
+</head>
+<body>
+  <p id="myPara">Hello, World!</p>
+  <button id="changeBtn">Change Text</button>
+
+  <script>
+    // Get the elements
+    const para = document.getElementById("myPara");
+    const btn = document.getElementById("changeBtn");
+
+    // Add event listener for button click
+    btn.addEventListener("click", function() {
+      para.textContent = "JavaScript is fun!";
+      para.style.color = "blue";
+    });
+  </script>
+</body>
+</html>

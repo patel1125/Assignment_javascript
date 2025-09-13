@@ -1,0 +1,79 @@
+
+</html> <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Changing Background, Date & Digital Clock</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      transition: background-color 2s ease; /* Smooth color transition */
+    }
+    #clock {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    #date {
+      font-size: 1.5em;
+      margin-top: 10px;
+      color: darkslategray;
+    }
+  </style>
+</head>
+<body>
+  <h2>Background will change every 5 seconds...</h2>
+  <div id="date"></div>
+  <div id="clock"></div>
+
+  <script>
+    // Background colors
+    const colors = ["lightblue", "lightgreen", "lightpink", "lavender", "peachpuff", "lightyellow"];
+    let colorIndex = 0;
+
+    // Change background every 5 seconds
+    setInterval(() => {
+      document.body.style.backgroundColor = colors[colorIndex];
+      colorIndex = (colorIndex + 1) % colors.length;
+    }, 5000);
+
+    // Digital Clock + Date
+    function updateClock() {
+      let now = new Date();
+
+      // Clock part
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      let ampm = hours >= 12 ? "PM" : "AM";
+
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      let timeString = hours + ":" + minutes + ":" + seconds + " " + ampm;
+      document.getElementById("clock").innerText = timeString;
+
+      // Date part
+      let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      let months = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"];
+
+      let dayName = days[now.getDay()];
+      let day = now.getDate();
+      let month = months[now.getMonth()];
+      let year = now.getFullYear();
+
+      let dateString = dayName + ", " + day + " " + month + " " + year;
+      document.getElementById("date").innerText = dateString;
+    }
+
+    // Run immediately and then every second
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>

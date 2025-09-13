@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue;
+            padding: 20px;
+        }
+        h2{
+            color: #333;
+        }
+        .result{
+            background: #fff;
+             border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>JavaSript Data Types</h2>
+    <div id="output"></div>
+    <script>
+        let myString ="hello javascript";
+        let myNumber = 42;
+        let myboolean = true;
+        let myNull = null; 
+        let myundrefined;
+
+
+       function showResult(value, type) {
+            document.getElementById("output").innerHTML += 
+                `<div class="result">Value: <b>${value}</b> | Type: <b>${type}</b></div>`;
+        }
+              showResult(myString, typeof myString);
+              showResult(myNumber, typeof myNumber);
+              showResult(myboolean, typeof myboolean);
+              showResult(myNull, typeof myNull);
+              showResult(myundrefined, typeof myundrefined);
+
+
+              console.log("value:", myString, "| Type:", typeof myString);
+              console.log("value:",myNumber, "| Type:", typeof myNumber );
+              console.log("value:", myboolean, "|Type:", typeof myboolean);
+              console.log("value:", myNull, "| Type:", typeof myNull);
+              console.log("value:", myundrefined, "|Type",typeof myundrefined);
+    </script>
+</body>
+</html>

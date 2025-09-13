@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript If-Else and Switch Tasks</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; padding: 8px; }
+    button { cursor: pointer; background: #0078D7; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #005fa3; }
+    .output { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Task 1: Check Positive, Negative, or Zero</h2>
+  <input type="number" id="numCheck" placeholder="Enter a number">
+  <button onclick="checkNumber()">Check</button>
+  <p id="result1" class="output"></p>
+
+  <hr>
+
+  <h2>Task 2: Day of the Week</h2>
+  <input type="number" id="dayInput" placeholder="Enter (1-7)">
+  <button onclick="showDay()">Show Day</button>
+  <p id="result2" class="output"></p>
+
+  <script>
+    // ✅ Task 1: If-Else to check positive, negative, or zero
+    function checkNumber() {
+      let num = Number(document.getElementById("numCheck").value);
+      let result = document.getElementById("result1");
+
+      if (num > 0) {
+        result.textContent = "✅ " + num + " is Positive";
+      } else if (num < 0) {
+        result.textContent = "❌ " + num + " is Negative";
+      } else {
+        result.textContent = "0 is Zero";
+      }
+    }
+
+    // ✅ Task 2: Switch to display day of the week
+    function showDay() {
+      let day = Number(document.getElementById("dayInput").value);
+      let result = document.getElementById("result2");
+      let dayName;
+
+      switch (day) {
+        case 1: dayName = "Monday"; break;
+        case 2: dayName = "Tuesday"; break;
+        case 3: dayName = "Wednesday"; break;
+        case 4: dayName = "Thursday"; break;
+        case 5: dayName = "Friday"; break;
+        case 6: dayName = "Saturday"; break;
+        case 7: dayName = "Sunday"; break;
+        default: dayName = "⚠️ Invalid input! Please enter a number between 1 and 7.";
+      }
+
+      result.textContent = dayName;
+    }
+  </script>
+</body>
+</html>

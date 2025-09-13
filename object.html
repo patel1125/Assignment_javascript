@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Car Object</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; padding: 8px; }
+    button { cursor: pointer; background: #0078D7; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #005fa3; }
+    .output { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Interactive Car Object</h2>
+
+  <h3>Create/Update Car Details</h3>
+  <input type="text" id="brand" placeholder="Brand">
+  <input type="text" id="model" placeholder="Model">
+  <input type="number" id="year" placeholder="Year">
+  <input type="text" id="color" placeholder="Color">
+  <button onclick="updateCar()">Update Car</button>
+
+  <p id="carOutput" class="output"></p>
+
+  <script>
+    // Initial car object
+    let car = {
+      brand: "Toyota",
+      model: "Corolla",
+      year: 2015
+    };
+
+    const carOutput = document.getElementById("carOutput");
+
+    // Display the current car object
+    function displayCar() {
+      carOutput.innerHTML = `Car Details: <br>
+        Brand: ${car.brand} <br>
+        Model: ${car.model} <br>
+        Year: ${car.year} <br>
+        Color: ${car.color ? car.color : "Not set"}`;
+      console.log("Car Object:", car);
+    }
+
+    displayCar();
+
+    function updateCar() {
+      let brandInput = document.getElementById("brand").value.trim();
+      let modelInput = document.getElementById("model").value.trim();
+      let yearInput = document.getElementById("year").value;
+      let colorInput = document.getElementById("color").value.trim();
+
+      // Update properties if input provided
+      if (brandInput) car.brand = brandInput;
+      if (modelInput) car.model = modelInput;
+      if (yearInput) car.year = Number(yearInput);
+      if (colorInput) car.color = colorInput;
+
+      displayCar();
+
+      // Clear input fields
+      document.getElementById("brand").value = "";
+      document.getElementById("model").value = "";
+      document.getElementById("year").value = "";
+      document.getElementById("color").value = "";
+    }
+  </script>
+</body>
+</html>

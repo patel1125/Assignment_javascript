@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive JavaScript Operators</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 8px;
+      width: 100px;
+    }
+    button {
+      padding: 8px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      background-color: #0078D7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h2>JavaScript Arithmetic, Comparison, and Logical Operators</h2>
+  
+  <label>Enter first number: </label>
+  <input type="number" id="num1" placeholder="e.g. 15"><br>
+  
+  <label>Enter second number: </label>
+  <input type="number" id="num2" placeholder="e.g. 5"><br>
+  
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="output"></div>
+
+  <script>
+    function calculate() {
+      // Get values from input boxes
+      let a = Number(document.getElementById("num1").value);
+      let b = Number(document.getElementById("num2").value);
+
+      // Select output div
+      let out = document.getElementById("output");
+      out.innerHTML = ""; // Clear old results
+
+      // Helper function to print both page and console
+      function printResult(text) {
+        console.log(text);
+        out.innerHTML += text + "<br>";
+      }
+
+      // Arithmetic operations
+      printResult("Addition: " + (a + b));
+      printResult("Subtraction: " + (a - b));
+      printResult("Multiplication: " + (a * b));
+      printResult("Division: " + (b !== 0 ? (a / b) : "Cannot divide by zero"));
+
+      // Comparison operators
+      printResult("Are a and b equal? " + (a === b));
+      printResult("Is a greater than b? " + (a > b));
+      printResult("Is b greater than a? " + (b > a));
+
+      // Logical operators
+      printResult("Is a > 10 AND b < 5? " + (a > 10 && b < 5));
+      printResult("Is a > 10 OR b < 5? " + (a > 10 || b < 5));
+      printResult("NOT (a > b): " + !(a > b));
+    }
+  </script>
+</body>
+</html>
